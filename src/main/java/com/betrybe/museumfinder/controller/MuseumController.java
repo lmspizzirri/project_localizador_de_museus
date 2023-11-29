@@ -2,7 +2,7 @@ package com.betrybe.museumfinder.controller;
 
 import com.betrybe.museumfinder.dto.MuseumCreationDto;
 import com.betrybe.museumfinder.dto.MuseumDto;
-import com.betrybe.museumfinder.exception.MuseumNotFoundExpection;
+import com.betrybe.museumfinder.exception.MuseumNotFoundException;
 import com.betrybe.museumfinder.model.Coordinate;
 import com.betrybe.museumfinder.model.Museum;
 import com.betrybe.museumfinder.service.MuseumServiceInterface;
@@ -60,7 +60,7 @@ public class MuseumController {
    * @param longitude the longitude
    * @param maxDist   the max dist
    * @return the museum
-   * @throws MuseumNotFoundExpection the museus not found expection
+   * @throws MuseumNotFoundException the museus not found expection
    */
   @GetMapping("/closest")
   public ResponseEntity<MuseumDto> getMuseum(@RequestParam("lat") double latitude,
