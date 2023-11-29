@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CoverageValidationTest {
+
   @Autowired
   @Qualifier("requestMappingHandlerMapping")
   RequestMappingHandlerMapping handlerMapping;

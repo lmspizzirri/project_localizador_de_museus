@@ -62,16 +62,16 @@ public class MuseumController {
    * @throws MuseumNotFoundExpection the museus not found expection
    */
   @GetMapping("/closest")
-    public ResponseEntity<MuseumDto> getMuseum(
+  public ResponseEntity<MuseumDto> getMuseum(
       @RequestParam("lat") double latitude,
       @RequestParam("lng") double longitude,
       @RequestParam("max_dist_km") double maxDist
-      ) throws MuseumNotFoundExpection {
-      Coordinate coordinate = new Coordinate(latitude, longitude);
-      MuseumDto museumDto = ModelDtoConverter.modelToDto(
+  ) throws MuseumNotFoundExpection {
+    Coordinate coordinate = new Coordinate(latitude, longitude);
+    MuseumDto museumDto = ModelDtoConverter.modelToDto(
         museumServiceInterface.getClosestMuseum(coordinate, maxDist)
-      );
-      return ResponseEntity.ok(museumDto);
-    }
+    );
+    return ResponseEntity.ok(museumDto);
+  }
 
 }

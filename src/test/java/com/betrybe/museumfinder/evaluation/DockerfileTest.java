@@ -76,7 +76,8 @@ class DockerfileTest {
         "RUN".equals(dc.cmd)
             && dc.parameters
             .filter((v) -> v.contains("mvn"))
-            .filter((v) -> v.contains("install") || v.contains("dependency") || v.contains("package"))
+            .filter(
+                (v) -> v.contains("install") || v.contains("dependency") || v.contains("package"))
             .isPresent()
     ), "Configuração de resolução de dependências da build-image não encontrada ou incorreta");
 
