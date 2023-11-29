@@ -4,7 +4,7 @@ import static com.betrybe.museumfinder.util.CoordinateUtil.isCoordinateValid;
 
 import com.betrybe.museumfinder.database.MuseumFakeDatabase;
 import com.betrybe.museumfinder.exception.InvalidCoordinateException;
-import com.betrybe.museumfinder.exception.MuseusNotFoundExpection;
+import com.betrybe.museumfinder.exception.MuseumNotFoundExpection;
 import com.betrybe.museumfinder.model.Coordinate;
 import com.betrybe.museumfinder.model.Museum;
 import java.util.Optional;
@@ -34,13 +34,13 @@ public class MuseumService implements MuseumServiceInterface {
 
   @Override
   public Museum getClosestMuseum(Coordinate coordinate, Double maxDistance)
-      throws MuseusNotFoundExpection {
+      throws MuseumNotFoundExpection {
     if(!isCoordinateValid(coordinate)) {
       throw new InvalidCoordinateException();
     }
     Optional<Museum> nearestMuseum = museumFakeDatabase.getClosestMuseum(coordinate, maxDistance);
     if(nearestMuseum.isEmpty()) {
-      throw new MuseusNotFoundExpection();
+      throw new MuseumNotFoundExpection();
     }
     return nearestMuseum.get();
   }
