@@ -1,8 +1,10 @@
 package com.betrybe.museumfinder.exception;
 
+import javax.management.RuntimeErrorException;
+
 /**
  * The type Museus not found expection.
  */
-public class MuseumNotFoundExpection extends Throwable {
+public class MuseumNotFoundExpection extends RuntimeException {
 
 }
