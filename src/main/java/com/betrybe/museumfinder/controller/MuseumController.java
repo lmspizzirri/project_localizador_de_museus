@@ -64,8 +64,8 @@ public class MuseumController {
    */
   @GetMapping("/closest")
   public ResponseEntity<MuseumDto> getMuseum(@RequestParam("lat") double latitude,
-      @RequestParam("lng") double longitude, @RequestParam("max_dist_km") double maxDist)
-      throws MuseumNotFoundExpection {
+      @RequestParam("lng") double longitude, @RequestParam(name = "max_dist_km") double maxDist
+  ) {
     Coordinate coordinate = new Coordinate(latitude, longitude);
     MuseumDto museumDto = ModelDtoConverter.modelToDto(
         museumServiceInterface.getClosestMuseum(coordinate, maxDist));

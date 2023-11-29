@@ -21,11 +21,10 @@ public class GeneralControllerAdvice {
    */
   @ExceptionHandler(InvalidCoordinateException.class)
   public ResponseEntity<String> handleInvalidCoordinateException(
-      InvalidCoordinateException exception
-  ) {
+      InvalidCoordinateException exception) {
     return ResponseEntity
         .status(HttpStatus.BAD_REQUEST)
-        .body("Coordenada Inválida!");
+        .body(exception.getMessage());
   }
 
   /**
@@ -39,7 +38,7 @@ public class GeneralControllerAdvice {
       MuseumNotFoundExpection exception) {
     return ResponseEntity
         .status(HttpStatus.NOT_FOUND)
-        .body("Museu não encontrado!");
+        .body(exception.getMessage());
   }
 
   /**
