@@ -1,5 +1,6 @@
 package com.betrybe.museumfinder.service;
 
+import com.betrybe.museumfinder.exception.MuseusNotFoundExpection;
 import com.betrybe.museumfinder.model.Coordinate;
 import com.betrybe.museumfinder.model.Museum;
 
@@ -8,7 +9,7 @@ import com.betrybe.museumfinder.model.Museum;
  */
 public interface MuseumServiceInterface {
 
-  Museum getClosestMuseum(Coordinate coordinate, Double maxDistance);
+  Museum getClosestMuseum(Coordinate coordinate, Double maxDistance) throws MuseusNotFoundExpection;
 
   Museum createMuseum(Museum museum);
 
