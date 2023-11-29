@@ -19,8 +19,8 @@ public class GeneralControllerAdvice {
    * @param exception the exception
    * @return the response entity
    */
-  @ExceptionHandler
-  public ResponseEntity<String> handlerInvalidCoordinateException(
+  @ExceptionHandler(InvalidCoordinateException.class)
+  public ResponseEntity<String> handleInvalidCoordinateException(
       InvalidCoordinateException exception
   ) {
     return ResponseEntity
@@ -34,11 +34,11 @@ public class GeneralControllerAdvice {
    * @param exception the exception
    * @return the response entity
    */
-  @ExceptionHandler
-  public ResponseEntity<String> handlerNotFoundException(
+  @ExceptionHandler(MuseumNotFoundExpection.class)
+  public ResponseEntity<String> handleMuseumNotFoundException(
       MuseumNotFoundExpection exception) {
     return ResponseEntity
-        .status(HttpStatus.BAD_REQUEST)
+        .status(HttpStatus.NOT_FOUND)
         .body("Museu não encontrado!");
   }
 
@@ -48,8 +48,8 @@ public class GeneralControllerAdvice {
    * @param exception the exception
    * @return the response entity
    */
-  @ExceptionHandler
-  public ResponseEntity<String> handlerException(
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<String> handleException(
       Exception exception) {
     return ResponseEntity
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
