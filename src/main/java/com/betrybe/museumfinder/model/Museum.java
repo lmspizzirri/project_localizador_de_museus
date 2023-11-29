@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class Museum {
+
   private Long id;
   private String name;
   private String description;

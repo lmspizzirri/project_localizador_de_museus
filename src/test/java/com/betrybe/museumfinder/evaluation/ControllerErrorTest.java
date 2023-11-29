@@ -37,6 +37,7 @@ import org.springframework.web.context.WebApplicationContext;
 @AutoConfigureMockMvc
 @DisplayName("Req 07")
 public class ControllerErrorTest {
+
   @MockBean
   MuseumServiceInterface service;
 
@@ -64,10 +65,12 @@ public class ControllerErrorTest {
     testGetForException(museumNotFoundException, HttpStatus.NOT_FOUND, "Museu não encontrado!");
 
     testPostForException(runtimeException, HttpStatus.INTERNAL_SERVER_ERROR, "Erro interno!");
-    testPostForException(invalidCoordinateException, HttpStatus.BAD_REQUEST, "Coordenada inválida!");
+    testPostForException(invalidCoordinateException, HttpStatus.BAD_REQUEST,
+        "Coordenada inválida!");
   }
 
-  private void testGetForException(Exception exception, HttpStatus status, String expectedBody) throws Exception {
+  private void testGetForException(Exception exception, HttpStatus status, String expectedBody)
+      throws Exception {
     Mockito.reset(service);
     Mockito.when(service.getClosestMuseum(any(Coordinate.class), anyDouble())).thenThrow(exception);
     mockMvc.perform(
@@ -80,7 +83,8 @@ public class ControllerErrorTest {
     Mockito.verify(service).getClosestMuseum(any(), any());
   }
 
-  private void testPostForException(Exception exception, HttpStatus status, String expectedBody) throws Exception {
+  private void testPostForException(Exception exception, HttpStatus status, String expectedBody)
+      throws Exception {
     Mockito.reset(service);
     Mockito.when(service.createMuseum(any())).thenThrow(exception);
 
@@ -95,6 +99,7 @@ public class ControllerErrorTest {
     return (Exception) instantiateClassByName(
         "com.betrybe.museumfinder.exception.InvalidCoordinateException");
   }
+
   private Exception createMuseumNotFoundException() {
     return (Exception) instantiateClassByName(
         "com.betrybe.museumfinder.exception.MuseumNotFoundException");

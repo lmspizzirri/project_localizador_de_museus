@@ -67,8 +67,8 @@ public class ControllerLayerTest {
     Mockito.when(museumsServiceInterface.getClosestMuseum(any(), any())).thenReturn(museum);
 
     mockMvc.perform(
-          get("/museums/closest?lat=12.34&lng=23.45&max_dist_km=10")
-          .accept(MediaType.APPLICATION_JSON)
+            get("/museums/closest?lat=12.34&lng=23.45&max_dist_km=10")
+                .accept(MediaType.APPLICATION_JSON)
         )
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))

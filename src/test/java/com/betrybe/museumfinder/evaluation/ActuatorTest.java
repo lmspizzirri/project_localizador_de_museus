@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureMockMvc
 @DisplayName("Req 02")
 class ActuatorTest {
+
   @Autowired
   private MockMvc mockMvc;
 
