@@ -56,6 +56,7 @@ public class MuseumService implements MuseumServiceInterface {
 
   @Override
   public Museum getMuseum(Long id) {
-    return null;
+    Optional<Museum> museum = this.museumFakeDatabase.getMuseum(id);
+    return museum.orElseThrow(MuseumNotFoundExpection::new);
   }
 }
