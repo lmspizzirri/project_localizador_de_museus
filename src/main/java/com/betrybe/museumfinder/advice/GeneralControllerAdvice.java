@@ -7,8 +7,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+/**
+ * The type General controller advice.
+ */
 @ControllerAdvice
 public class GeneralControllerAdvice {
+
+  /**
+   * Handler invalid coordinate exception response entity.
+   *
+   * @param exception the exception
+   * @return the response entity
+   */
   @ExceptionHandler
   public ResponseEntity<String> handlerInvalidCoordinateException(
       InvalidCoordinateException exception
@@ -18,6 +28,12 @@ public class GeneralControllerAdvice {
         .body("Coordenada Inválida!");
   }
 
+  /**
+   * Handler not found exception response entity.
+   *
+   * @param exception the exception
+   * @return the response entity
+   */
   @ExceptionHandler
   public ResponseEntity<String> handlerNotFoundException(
       MuseumNotFoundExpection exception) {
@@ -26,6 +42,12 @@ public class GeneralControllerAdvice {
         .body("Museu não encontrado!");
   }
 
+  /**
+   * Handler exception response entity.
+   *
+   * @param exception the exception
+   * @return the response entity
+   */
   @ExceptionHandler
   public ResponseEntity<String> handlerException(
       Exception exception) {
